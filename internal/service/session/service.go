@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"root/internal/domain/session"
-	"root/pkg/logger"
+	"github.com/aq189/bin/internal/domain/session"
+	"github.com/aq189/bin/pkg/logger"
 )
 
 // SessionRepository defines the interface for session storage

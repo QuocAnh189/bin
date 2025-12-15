@@ -34,6 +34,7 @@ POSTGRES_DB=rootserver
 ### TLS Certificates
 
 Place your TLS certificates in:
+
 - Certificate: `/etc/ssl/certs/server.crt`
 - Private Key: `/etc/ssl/private/server.key`
 
@@ -46,7 +47,7 @@ Or specify custom paths in `config/production/config.json`.
 Create `docker-compose.yml`:
 
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   root-server:
@@ -115,43 +116,43 @@ spec:
         app: root-server
     spec:
       containers:
-      - name: root-server
-        image: root-server:latest
-        ports:
-        - containerPort: 443
-        env:
-        - name: CONFIG_PATH
-          value: config/production/config.json
-        - name: JWT_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: root-server-secrets
-              key: jwt-secret
-        - name: REDIS_ADDR
-          value: redis:6379
-        - name: POSTGRES_HOST
-          value: postgres
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "256Mi"
-            cpu: "200m"
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 443
-            scheme: HTTPS
-          initialDelaySeconds: 10
-          periodSeconds: 30
-        readinessProbe:
-          httpGet:
-            path: /ready
-            port: 443
-            scheme: HTTPS
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        - name: root-server
+          image: root-server:latest
+          ports:
+            - containerPort: 443
+          env:
+            - name: CONFIG_PATH
+              value: config/production/config.json
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: root-server-secrets
+                  key: jwt-secret
+            - name: REDIS_ADDR
+              value: redis:6379
+            - name: POSTGRES_HOST
+              value: postgres
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 443
+              scheme: HTTPS
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 443
+              scheme: HTTPS
+            initialDelaySeconds: 5
+            periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service
@@ -161,8 +162,8 @@ spec:
   selector:
     app: root-server
   ports:
-  - port: 443
-    targetPort: 443
+    - port: 443
+      targetPort: 443
   type: LoadBalancer
 ```
 
@@ -187,7 +188,7 @@ User=rootserver
 WorkingDirectory=/opt/root-server
 Environment="CONFIG_PATH=/opt/root-server/config/production/config.json"
 EnvironmentFile=/opt/root-server/.env
-ExecStart=/opt/root-server/bin/rootserver
+ExecStart=/opt/root-server/github.com/aq189/bin/rootserver
 Restart=on-failure
 RestartSec=10
 
@@ -239,9 +240,9 @@ Expose metrics for Prometheus:
 ```yaml
 # prometheus.yml
 scrape_configs:
-  - job_name: 'root-server'
+  - job_name: "root-server"
     static_configs:
-      - targets: ['root-server:8080']
+      - targets: ["root-server:8080"]
 ```
 
 ### Logging
@@ -253,7 +254,7 @@ Logs are written to stdout in JSON format. Configure log aggregation:
 filebeat.inputs:
   - type: container
     paths:
-      - '/var/lib/docker/containers/*/*.log'
+      - "/var/lib/docker/containers/*/*.log"
     processors:
       - add_docker_metadata: ~
 ```
@@ -359,16 +360,19 @@ Enable debug logging:
 ### Common Issues
 
 **Issue:** Connection refused
+
 - Check if server is running: `netstat -tlnp | grep 443`
 - Verify firewall rules
 - Check TLS certificates
 
 **Issue:** Token validation fails
+
 - Verify JWT_SECRET matches across instances
 - Check token expiration
 - Ensure clock synchronization (NTP)
 
 **Issue:** High memory usage
+
 - Check session cleanup is running
 - Review Redis memory policy
 - Monitor for connection leaks

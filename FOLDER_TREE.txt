@@ -148,7 +148,7 @@ Development:
 
 Production Build:
   make build                  # Build binary
-  ./bin/rootserver            # Run with config
+  ./github.com/aq189/bin/rootserver            # Run with config
 
 Testing:
   make test                   # Run all tests

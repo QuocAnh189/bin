@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"root/internal/domain/session"
+	"github.com/aq189/bin/internal/domain/session"
 )
 
 // SessionRepository implements in-memory session storage

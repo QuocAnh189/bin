@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"root/pkg/logger"
+	"github.com/aq189/bin/pkg/logger"
 )
 
 // responseWriter wraps http.ResponseWriter to capture status code

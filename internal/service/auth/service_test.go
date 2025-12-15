@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"root/internal/domain/token"
-	"root/pkg/jwt"
-	"root/pkg/logger"
+	"github.com/aq189/bin/internal/domain/token"
+	"github.com/aq189/bin/pkg/jwt"
+	"github.com/aq189/bin/pkg/logger"
 )
 
 func TestService_IssueToken(t *testing.T) {

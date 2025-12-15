@@ -40,7 +40,7 @@ CONFIG_PATH=config/development/config.json go run cmd/rootserver/main.go
 make build
 
 # Run with production config
-CONFIG_PATH=config/production/config.json JWT_SECRET=your-secret ./bin/rootserver
+CONFIG_PATH=config/production/config.json JWT_SECRET=your-secret ./github.com/aq189/bin/rootserver
 ```
 
 ### Docker

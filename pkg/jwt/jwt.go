@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"root/internal/domain/token"
+	"github.com/aq189/bin/internal/domain/token"
 )
 
 // Service handles JWT operations

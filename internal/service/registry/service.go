@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	"root/internal/domain/service"
-	"root/pkg/logger"
+	"github.com/aq189/bin/internal/domain/service"
+	"github.com/aq189/bin/pkg/logger"
 )
 
 // RegistryRepository defines the interface for service registry storage

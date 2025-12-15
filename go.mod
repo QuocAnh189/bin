@@ -1,7 +1,3 @@
-module root
+module github.com/aq189/bin
 
-go 1.23
-
-require (
-	// Add your dependencies here
-)
+go 1.24.4

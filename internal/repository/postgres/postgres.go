@@ -3,7 +3,7 @@ package postgres
 import (
 	"context"
 
-	"root/internal/domain/service"
+	"github.com/aq189/bin/internal/domain/service"
 )
 
 // Repository implements PostgreSQL-based storage

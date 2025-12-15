@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"root/internal/domain/token"
-	"root/internal/service/auth"
-	"root/pkg/logger"
+	"github.com/aq189/bin/internal/domain/token"
+	"github.com/aq189/bin/internal/service/auth"
+	"github.com/aq189/bin/pkg/logger"
 )
 
 // Handler handles authentication HTTP requests

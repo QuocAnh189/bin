@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"root/internal/service/session"
-	"root/pkg/logger"
+	"github.com/aq189/bin/internal/service/session"
+	"github.com/aq189/bin/pkg/logger"
 )
 
 // Handler handles session HTTP requests

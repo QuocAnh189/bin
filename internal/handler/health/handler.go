@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"root/pkg/logger"
+	"github.com/aq189/bin/pkg/logger"
 )
 
 // Handler handles health check HTTP requests

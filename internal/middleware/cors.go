@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"root/internal/domain/config"
+	"github.com/aq189/bin/internal/domain/config"
 )
 
 // CORS creates a middleware that handles CORS

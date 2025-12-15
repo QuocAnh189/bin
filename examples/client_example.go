@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"root/pkg/rootclient"
+	"github.com/aq189/bin/pkg/rootclient"
 )
 
 func main() {

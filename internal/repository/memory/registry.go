@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"sync"
 
-	"root/internal/domain/service"
+	"github.com/aq189/bin/internal/domain/service"
 )
 
 // RegistryRepository implements in-memory service registry storage

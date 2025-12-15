@@ -3,12 +3,12 @@
 # Build the application
 build:
 	@echo "Building root server..."
-	go build -o bin/rootserver cmd/rootserver/main.go
+	go build -o github.com/aq189/bin/rootserver cmd/rootserver/main.go
 
 # Run the application
 run: build
 	@echo "Running root server..."
-	./bin/rootserver
+	./github.com/aq189/bin/rootserver
 
 # Run in development mode
 dev:
@@ -27,7 +27,7 @@ coverage: test
 # Clean build artifacts
 clean:
 	@echo "Cleaning..."
-	rm -rf bin/
+	rm -rf github.com/aq189/bin/
 	rm -f coverage.out
 
 # Format code

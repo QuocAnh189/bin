@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"runtime/debug"
 
-	"root/pkg/logger"
+	"github.com/aq189/bin/pkg/logger"
 )
 
 // Recovery creates a middleware that recovers from panics

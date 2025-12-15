@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"root/internal/domain/session"
+	"github.com/aq189/bin/internal/domain/session"
 )
 
 func TestSessionRepository_Create(t *testing.T) {

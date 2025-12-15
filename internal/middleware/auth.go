@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"root/internal/service/auth"
+	"github.com/aq189/bin/internal/service/auth"
 )
 
 // Authenticate creates a middleware that validates JWT tokens

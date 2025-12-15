@@ -7,7 +7,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"root/internal/bootstrap"
+	"github.com/aq189/bin/internal/bootstrap"
 )
 
 func main() {

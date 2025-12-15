@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"root/internal/domain/token"
-	"root/pkg/jwt"
-	"root/pkg/logger"
+	"github.com/aq189/bin/internal/domain/token"
+	"github.com/aq189/bin/pkg/jwt"
+	"github.com/aq189/bin/pkg/logger"
 )
 
 // Service handles authentication operations

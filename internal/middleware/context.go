@@ -3,7 +3,7 @@ package middleware
 import (
 	"context"
 
-	"root/internal/domain/token"
+	"github.com/aq189/bin/internal/domain/token"
 )
 
 type contextKey string

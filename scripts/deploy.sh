@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/github.com/aq189/bin/bash
 
 # Root Server Deployment Script
 

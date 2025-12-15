@@ -3,7 +3,7 @@ package redis
 import (
 	"context"
 
-	"root/internal/domain/session"
+	"github.com/aq189/bin/internal/domain/session"
 )
 
 // Repository implements Redis-based storage

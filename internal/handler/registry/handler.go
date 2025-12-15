@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	"root/internal/domain/service"
-	"root/internal/service/registry"
-	"root/pkg/logger"
+	"github.com/aq189/bin/internal/domain/service"
+	"github.com/aq189/bin/internal/service/registry"
+	"github.com/aq189/bin/pkg/logger"
 )
 
 // Handler handles service registry HTTP requests
