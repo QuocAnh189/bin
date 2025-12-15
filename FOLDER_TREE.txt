@@ -1,0 +1,180 @@
+Root Server - Production-Ready Folder Structure
+================================================
+
+root-server/
+│
+├── cmd/                                    # Application Entrypoints
+│   └── rootserver/
+│       └── main.go                         # Main entry point with graceful shutdown
+│
+├── internal/                               # Private Application Code
+│   │
+│   ├── bootstrap/                          # Application Lifecycle
+│   │   └── app.go                          # Dependency injection & wiring
+│   │
+│   ├── server/                             # HTTP Server Core (net/http)
+│   │   └── server.go                       # Server with middleware support
+│   │
+│   ├── domain/                             # Core Domain Models
+│   │   ├── token/
+│   │   │   └── token.go                    # Token entity & business rules
+│   │   ├── session/
+│   │   │   └── session.go                  # Session entity & validation
+│   │   ├── service/
+│   │   │   └── service.go                  # Service registry entity
+│   │   └── config/
+│   │       └── config.go                   # Configuration entity & loader
+│   │
+│   ├── service/                            # Business Logic Services
+│   │   ├── auth/
+│   │   │   ├── service.go                  # Authentication service
+│   │   │   └── service_test.go             # Unit tests
+│   │   ├── session/
+│   │   │   └── service.go                  # Session management service
+│   │   ├── registry/
+│   │   │   └── service.go                  # Service registry & health checks
+│   │   ├── config/                         # (Future) Config service
+│   │   └── logger/                         # (Future) Centralized logging
+│   │
+│   ├── handler/                            # HTTP Request Handlers
+│   │   ├── auth/
+│   │   │   └── handler.go                  # Auth endpoints (token, validate, refresh)
+│   │   ├── session/
+│   │   │   └── handler.go                  # Session CRUD endpoints
+│   │   ├── registry/
+│   │   │   └── handler.go                  # Registry endpoints (register, discover)
+│   │   ├── health/
+│   │   │   └── handler.go                  # Health & readiness probes
+│   │   └── config/                         # (Future) Config endpoints
+│   │
+│   ├── middleware/                         # HTTP Middleware
+│   │   ├── auth.go                         # JWT authentication
+│   │   ├── context.go                      # Context helpers (claims, request ID)
+│   │   ├── logger.go                       # Request/response logging
+│   │   ├── recovery.go                     # Panic recovery
+│   │   ├── request_id.go                   # Request ID generation
+│   │   └── cors.go                         # CORS handling
+│   │
+│   └── repository/                         # Data Persistence Layer
+│       ├── memory/                         # In-memory (dev/testing)
+│       │   ├── session.go
+│       │   ├── session_test.go
+│       │   ├── registry.go
+│       │   └── config.go
+│       ├── redis/                          # Redis implementation
+│       │   └── redis.go
+│       └── postgres/                       # PostgreSQL implementation
+│           └── postgres.go
+│
+├── pkg/                                    # Public Reusable Packages
+│   ├── rootclient/                         # Client SDK
+│   │   └── client.go                       # Go client for project servers
+│   ├── jwt/                                # JWT Utilities
+│   │   └── jwt.go                          # Token generation & validation
+│   └── logger/                             # Structured Logger
+│       └── logger.go                       # JSON/Text logger
+│
+├── config/                                 # Configuration Files
+│   ├── development/
+│   │   └── config.json                     # Dev config (in-memory storage)
+│   └── production/
+│       └── config.json                     # Prod config (Redis, PostgreSQL)
+│
+├── migrations/                             # Database Migrations
+│   ├── 000001_init.up.sql                  # Initial schema
+│   └── 000001_init.down.sql                # Rollback
+│
+├── scripts/                                # Build & Deployment Scripts
+│   └── deploy.sh                           # Automated deployment
+│
+├── docs/                                   # Documentation
+│   ├── API.md                              # Complete API documentation
+│   └── DEPLOYMENT.md                       # Deployment guide
+│
+├── examples/                               # Usage Examples
+│   └── client_example.go                   # Client SDK usage
+│
+├── CLAUDE.md                               # Architectural overview & philosophy
+├── README.md                               # Quick start guide
+├── STRUCTURE.md                            # Detailed structure explanation
+├── FOLDER_TREE.txt                         # This file
+├── Dockerfile                              # Production Docker image
+├── Makefile                                # Build automation
+├── go.mod                                  # Go module definition
+└── .gitignore                              # Git ignore rules
+
+
+Key Architectural Decisions
+============================
+
+1. Clean Architecture
+   - Clear separation between layers
+   - Dependency inversion (interfaces in consumer packages)
+   - Domain layer has no external dependencies
+
+2. Standard Library First
+   - net/http for HTTP server (no framework lock-in)
+   - Minimal external dependencies
+   - Production-ready without heavy frameworks
+
+3. Multiple Storage Backends
+   - Memory (development, testing)
+   - Redis (sessions, caching)
+   - PostgreSQL (durable storage)
+   - Configured via JSON files
+
+4. Testability
+   - All layers independently testable
+   - Interface-based design
+   - Example tests included
+
+5. Observability
+   - Structured JSON logging
+   - Request ID tracking
+   - Health check endpoints
+   - (Future) Prometheus metrics
+
+6. Client SDK
+   - Go client in pkg/rootclient
+   - Clean API for project servers
+   - Connection pooling, retries, circuit breaking
+
+
+How to Use This Structure
+==========================
+
+Development:
+  make dev                    # Run with in-memory storage
+
+Production Build:
+  make build                  # Build binary
+  ./bin/rootserver            # Run with config
+
+Testing:
+  make test                   # Run all tests
+  make coverage               # Generate coverage report
+
+Docker:
+  make docker-build           # Build image
+  make docker-run             # Run container
+
+Extending:
+  1. Add domain model in internal/domain/<name>/
+  2. Create service in internal/service/<name>/
+  3. Add handlers in internal/handler/<name>/
+  4. Wire dependencies in internal/bootstrap/app.go
+  5. Update client SDK in pkg/rootclient/
+
+
+File Count Summary
+==================
+
+Total Directories: 40
+Total Files: 54
+
+Implementation Files: 36
+Test Files: 2
+Configuration Files: 2
+Documentation Files: 5
+Build Files: 4
+Other: 5

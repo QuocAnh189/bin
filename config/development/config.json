@@ -1,0 +1,51 @@
+{
+  "server": {
+    "addr": ":8080",
+    "read_timeout": 30,
+    "write_timeout": 30,
+    "idle_timeout": 120,
+    "tls": {
+      "enabled": false,
+      "cert_file": "",
+      "key_file": ""
+    },
+    "cors": {
+      "enabled": true,
+      "allowed_origins": ["*"],
+      "allowed_methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      "allowed_headers": ["Content-Type", "Authorization", "X-Request-ID"]
+    }
+  },
+  "jwt": {
+    "secret": "development-secret-change-in-production",
+    "access_token_ttl": 15,
+    "refresh_token_ttl": 168
+  },
+  "session": {
+    "default_ttl": 60,
+    "cleanup_period": 10
+  },
+  "registry": {
+    "health_check_interval": 30,
+    "health_check_timeout": 5
+  },
+  "storage": {
+    "type": "memory",
+    "redis": {
+      "addr": "localhost:6379",
+      "password": "",
+      "db": 0
+    },
+    "postgres": {
+      "host": "localhost",
+      "port": 5432,
+      "user": "root",
+      "password": "root",
+      "database": "rootserver"
+    }
+  },
+  "log": {
+    "level": "debug",
+    "format": "json"
+  }
+}
