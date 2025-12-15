@@ -11,5 +11,5 @@ func NewLogger() *Logger {
 
 func (l *Logger) Info(message string) {
 	// Implementation for info level logging
-	fmt.Println("love you bin")
+	fmt.Println(message)
 }
